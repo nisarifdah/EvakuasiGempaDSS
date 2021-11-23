@@ -31,31 +31,32 @@ def findClosestShelter(data, v):
         print('Not a list or not a number.')
 
 
-mcd_dago = [10,45.44]
-kebon_binatang = [50,-9]
-
+mcd_dago = [10, 45.44]
+kebon_binatang = [50, -9]
+ 
 shelterList = [mcd_dago, kebon_binatang]
 userLocation = [-6.914744, 107.609810]
 
 
+def coordinateToLocation(data, c):
+    try:
+        return min (data, key=lambda p: ifLocationSame(c[0], p[0], c[1], p[1]))
+    except TypeError:
+        print('Not a list or not a number')
 
 
 def stayAtHome():
     print("Tidak perlu ke Shelter")
  
-# # Driver function
-# if __name__=="__main__":
-#      
-#     # Coordinates tuple.Can contain more than one pair.
-#     coordinates =(-6.875796655127494, 107.62629536051634)
-#      
-#     reverseGeocode(coordinates)
 
 # modelnya gini kira2
 if location == bandungLocation:
     if skalaGempa > 6:
         if ifTsunami == True:
-            print(findClosestShelter(shelterList, userLocation))
+            x = findClosestShelter(shelterList, userLocation)
+            print(x)
+            #print(coordinateToLocation(shelterList,x))
+            print(ifLocationSame(shelterList, x))
         else:
             stayAtHome()
     else:
