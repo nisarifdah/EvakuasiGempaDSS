@@ -12,6 +12,8 @@ country = data['country']
 timezone = data['timezone']
 ip = data['ip']
 
+print(data)
+print("  ")
 print("ip:", ip)
 print("city:", city)
 print("region:", region),
