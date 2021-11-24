@@ -4,7 +4,7 @@ from random import randrange
 # print(randrange(10))
 
 ################ GET LOCATION USER ###############
-##################################################
+
 import requests
 
 r = requests.get('https://get.geojs.io/')
@@ -21,7 +21,7 @@ location = (geo_data['latitude'],geo_data['longitude']) # get user location
 userCity = geo_data['city']
 ##################################################
 
-bandungLocation = 'Yogyakarta'
+bandungLocation = "Yogyakarta"
 skalaGempa = 0 # skala gempa
 ifTsunami = True # apakah akan ada tsunami
  
@@ -69,7 +69,7 @@ def stayAtHome():
  
 
 # modelnya gini kira2
-if location == bandungLocation:
+if userCity == bandungLocation:
     skalaGempa = randrange(10)
     if skalaGempa >= 6:
         if ifTsunami == True:
