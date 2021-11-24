@@ -1,8 +1,7 @@
-import json
-from urllib.request import urlopen
+from pywebio.output import *
+import tes
 
-url = 'http://ipinfo.io/json'
-response = urlopen(url)
-data = json.load(response)
+put_text("Lokasi anda:" tes.)
 
-print(data)
+
+
