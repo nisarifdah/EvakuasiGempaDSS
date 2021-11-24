@@ -1,9 +1,11 @@
 import reverse_geocoder as rg
 import pprint
+from random import randrange
+# print(randrange(10))
 
 location = (12, 30) # get user location
 bandungLocation = (12, 30) # Bandung coordinate
-skalaGempa = 7 # gempanya berapa skalanya
+skalaGempa = 0 # skala gempa
 ifTsunami = True # apakah akan ada tsunami
  
 def reverseGeocode(coordinates):
@@ -38,11 +40,11 @@ shelterList = [mcd_dago, kebon_binatang]
 userLocation = [-6.914744, 107.609810]
 
 
-def coordinateToLocation(data, c):
-    try:
-        return min (data, key=lambda p: ifLocationSame(c[0], p[0], c[1], p[1]))
-    except TypeError:
-        print('Not a list or not a number')
+# def coordinateToLocation(data, c):
+#     try:
+#         return min (data, key=lambda p: ifLocationSame(c[0], p[0], c[1], p[1]))
+#     except TypeError:
+#         print('Not a list or not a number')
 
 
 def stayAtHome():
@@ -51,15 +53,19 @@ def stayAtHome():
 
 # modelnya gini kira2
 if location == bandungLocation:
-    if skalaGempa > 6:
+    skalaGempa = randrange(10)
+    if skalaGempa >= 6:
         if ifTsunami == True:
             x = findClosestShelter(shelterList, userLocation)
             print(x)
             #print(coordinateToLocation(shelterList,x))
-            print(ifLocationSame(shelterList, x))
+            # print(ifLocationSame(shelterList, x))
+            print(skalaGempa)
         else:
             stayAtHome()
+            print(skalaGempa)
     else:
         stayAtHome()
+        print(skalaGempa)
 else:
     print ("anda tidak di bandung")
