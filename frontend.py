@@ -4,8 +4,8 @@ from random import randrange
 import requests
 from pywebio.output import *
 
-bandungLocation = "Yogyakarta"
-##bandungLocation = "Bandung"
+##bandungLocation = "Yogyakarta"
+bandungLocation = "Bandung"
 skalaGempa = 0 # skala gempa
 ifTsunami = True # apakah akan ada tsunami
 
@@ -73,7 +73,6 @@ bandara_husen = [-6.903314719663762, 107.57321285669948]
 starbucks_setiabudhi = [-6.861120413849395, 107.59541762811227]
  
 shelterList = [mcd_dago, kebon_binatang, masjid_pusdai, trans_studio, aston_pasteur, bandara_husen, starbucks_setiabudhi]
-userLocation = [-6.914744, 107.609810]
 
 
 # def coordinateToLocation(data, c):
@@ -95,12 +94,12 @@ if getCity() == bandungLocation:
     if skalaGempa >= 6:
         if ifTsunami == True:
             x = findClosestShelter(shelterList, userLocation)
-            put_text("Info Gempa: "+skalaGempa+ "\n" + "Berpotensi Tsunami" + "\n" + "Saran: " + x)
+            put_text("Info Gempa: "+str(skalaGempa)+ " SR\n" + "\nBerpotensi Tsunami" + "\n" + "\nSaran: " + x)
             #print(coordinateToLocation(shelterList,x))
             # print(ifLocationSame(shelterList, x))
         else:
-            put_text("Info Gempa: "+skalaGempa+ "\n" + " Tidak Berpotensi Tsunami" + "\n" + "Saran: Tidak perlu ke Shelter!" )
+            put_text("Info Gempa: "+str(skalaGempa)+" SR\n" + "\nTidak Berpotensi Tsunami" + "\n" + "\nSaran: Tidak perlu ke Shelter!" )
     else:
-        put_text("Info Gempa: "+skalaGempa+ "\n" + " Tidak Berpotensi Tsunami" + "\n" + "Saran: Tidak perlu ke Shelter!" )
+        put_text("Info Gempa: "+str(skalaGempa)+ " SR\n" + "Tidak Berpotensi Tsunami" + "\n" + "Saran: Tidak perlu ke Shelter!" )
 else:
     put_text("Anda Tidak di Bandung")
