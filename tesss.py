@@ -3,7 +3,7 @@ import pprint
 from random import randrange
 # print(randrange(10))
 
-################ GET LOCATION USER ###############
+################ GET USER LOCATION ###############
 
 import requests
 
