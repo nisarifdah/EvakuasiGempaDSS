@@ -64,10 +64,15 @@ def findClosestShelter(data, v):
         print('Not a list or not a number.')
 
 
-mcd_dago = [10, 45.44]
-kebon_binatang = [50, -9]
+mcd_dago = [-6.884905429718143, 107.61343477064133]
+kebon_binatang = [-6.889494010930266, 107.60777111436555]
+masjid_pusdai = [-6.899779609038424, 107.62589145632269]
+trans_studio = [-6.924891899683676, 107.63648962766213]
+aston_pasteur = [-6.8935598412797345, 107.58723032879244]
+bandara_husen = [-6.903314719663762, 107.57321285669948]
+starbucks_setiabudhi = [-6.861120413849395, 107.59541762811227]
  
-shelterList = [mcd_dago, kebon_binatang]
+shelterList = [mcd_dago, kebon_binatang, masjid_pusdai, trans_studio, aston_pasteur, bandara_husen, starbucks_setiabudhi]
 userLocation = [-6.914744, 107.609810]
 
 
