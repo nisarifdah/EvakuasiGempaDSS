@@ -17,9 +17,22 @@ url = 'https://get.geojs.io/v1/ip/geo/'+ipAdd+'.json'
 geo_requests = requests.get(url)
 geo_data = geo_requests.json()
 
-location = (geo_data['latitude'],geo_data['longitude']) # get user location
-userCity = geo_data['city']
+userLocation = (geo_data['latitude'],geo_data['longitude']) # get user location
+
 ##################################################
+
+def getCity():
+    userCity = geo_data['city']
+    return (userCity)
+
+def getRegion():
+    userRegion = geo_data['region']
+    return (userRegion)
+
+def getCountry():
+    userCountry = geo_data['country']
+    return (userCountry)
+
 
 bandungLocation = "Yogyakarta"
 skalaGempa = 0 # skala gempa
@@ -69,7 +82,7 @@ def stayAtHome():
  
 
 # modelnya gini kira2
-if userCity == bandungLocation:
+if getCity() == bandungLocation:
     skalaGempa = randrange(10)
     if skalaGempa >= 6:
         if ifTsunami == True:
@@ -87,4 +100,4 @@ if userCity == bandungLocation:
 else:
     print ("Anda tidak di bandung")
     print (" ")
-    print ("Anda berada di: "+userCity)
+    print ("Anda berada di: "+getCity())
