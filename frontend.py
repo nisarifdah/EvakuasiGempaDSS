@@ -2,8 +2,10 @@
 #import pprint
 from random import randrange
 import requests
+from pywebio.output import *
 
 bandungLocation = "Yogyakarta"
+##bandungLocation = "Bandung"
 skalaGempa = 0 # skala gempa
 ifTsunami = True # apakah akan ada tsunami
 
@@ -82,23 +84,18 @@ def stayAtHome():
 
 # modelnya gini kira2
 
-from pywebio.output import *
-
 if getCity() == bandungLocation:
     style(put_text("Lokasi anda: "+ getCity()+","+ getCountry()), 'color:red')
     skalaGempa = randrange(10)
     if skalaGempa >= 6:
         if ifTsunami == True:
             x = findClosestShelter(shelterList, userLocation)
-            put_text(x)
+            put_text("Info Gempa: "+skalaGempa+ "\n" + "Berpotensi Tsunami" + "\n" + "Saran: " + x)
             #print(coordinateToLocation(shelterList,x))
             # print(ifLocationSame(shelterList, x))
-            put_text("Info Gempa: "+skalaGempa)
         else:
-            put_text(stayAtHome())
-            put_text("Info Gempa: "+skalaGempa)
+            put_text("Info Gempa: "+skalaGempa+ "\n" + " Tidak Berpotensi Tsunami" + "\n" + "Saran: Tidak perlu ke Shelter!" )
     else:
-        put_text(stayAtHome())
-        put_text("Info Gempa: "+skalaGempa)
+        put_text("Info Gempa: "+skalaGempa+ "\n" + " Tidak Berpotensi Tsunami" + "\n" + "Saran: Tidak perlu ke Shelter!" )
 else:
-    put_text("Anda tidak di bandung")
+    put_text("Anda Tidak di Bandung")
