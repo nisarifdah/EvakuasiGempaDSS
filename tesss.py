@@ -1,11 +1,13 @@
-import reverse_geocoder as rg
-import pprint
+###import reverse_geocoder as rg
+#import pprint
 from random import randrange
-# print(randrange(10))
+import requests
+
+bandungLocation = "Yogyakarta"
+skalaGempa = 0 # skala gempa
+ifTsunami = True # apakah akan ada tsunami
 
 ################ GET USER LOCATION ###############
-
-import requests
 
 r = requests.get('https://get.geojs.io/')
 
@@ -33,16 +35,13 @@ def getCountry():
     userCountry = geo_data['country']
     return (userCountry)
 
-
-bandungLocation = "Yogyakarta"
-skalaGempa = 0 # skala gempa
-ifTsunami = True # apakah akan ada tsunami
- 
+'''
 def reverseGeocode(coordinates):
     result = rg.search(coordinates)
      
     # result is a list containing ordered dictionary.
     pprint.pprint(result)
+'''
 
 def dist_between_two_lat_lon(*args):
     from math import asin, cos, radians, sin, sqrt
@@ -82,22 +81,26 @@ def stayAtHome():
  
 
 # modelnya gini kira2
-if getCity() == bandungLocation:
-    skalaGempa = randrange(10)
-    if skalaGempa >= 6:
-        if ifTsunami == True:
-            x = findClosestShelter(shelterList, userLocation)
-            print(x)
-            #print(coordinateToLocation(shelterList,x))
-            # print(ifLocationSame(shelterList, x))
-            print(skalaGempa)
+
+
+def model():
+    if getCity() == bandungLocation:
+        print ("Lokasi anda: "+ getCity()+","+ getCountry())
+        skalaGempa = randrange(10)
+        if skalaGempa >= 6:
+            if ifTsunami == True:
+                x = findClosestShelter(shelterList, userLocation)
+                print(x)
+                #print(coordinateToLocation(shelterList,x))
+                # print(ifLocationSame(shelterList, x))
+                print("Info Gempa: "+skalaGempa)
+            else:
+                stayAtHome()
+                print("Info Gempa: "+skalaGempa)
         else:
             stayAtHome()
-            print(skalaGempa)
+            print("Info Gempa: "+skalaGempa)
     else:
-        stayAtHome()
-        print(skalaGempa)
-else:
-    print ("Anda tidak di bandung")
-    print (" ")
-    print ("Anda berada di: "+getCity())
+        print ("Anda tidak di bandung")
+        print (" ")
+        print ("Anda berada di: "+getCity())
