@@ -16,7 +16,7 @@ from pywebio import start_server
 app = Flask(__name__)
 
 ##bandungLocation = "Yogyakarta"
-bandungLocation = "Bandung"
+bandungLocation = "Tokyo"
 skalaGempa = 0 # skala gempa
 ifTsunami = True # apakah akan ada tsunami
 
