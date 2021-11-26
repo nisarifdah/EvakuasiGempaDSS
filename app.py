@@ -2,6 +2,8 @@
 #import pprint
 from random import randrange
 import requests
+import geocoder
+g = geocoder.ip('me')
 
 from pywebio.platform.flask import webio_view
 from pywebio import STATIC_PATH
@@ -99,15 +101,16 @@ def stayAtHome():
 
 if getCity() == bandungLocation:
     style(put_text("Lokasi anda: "+ getCity()+","+ getCountry()), 'color:red')
-    skalaGempa = randrange(10)
+    skalaGempa = 8
     if skalaGempa >= 6:
         if ifTsunami == True:
-            x = findClosestShelter(shelterList, userLocation)
-            put_text("Info Gempa: "+str(skalaGempa)+ " SR\n" + "\nBerpotensi Tsunami" + "\n" + "\nSaran: " + x)
-            #print(coordinateToLocation(shelterList,x))
-            # print(ifLocationSame(shelterList, x))
+            userLocation = g.latlng
+            x = findClosestShelter(shelterList,userLocation)
+            put_text("Info Gempa: "+str(skalaGempa)+ " SR\n" + "\nBerpotensi Tsunami" + "\n" + "\nSaran shelter terdekat: " + str(x))
+            
         else:
             put_text("Info Gempa: "+str(skalaGempa)+" SR\n" + "\nTidak Berpotensi Tsunami" + "\n" + "\nSaran: Tidak perlu ke Shelter!" )
+            
     else:
         put_text("Info Gempa: "+str(skalaGempa)+ " SR\n" + "Tidak Berpotensi Tsunami" + "\n" + "Saran: Tidak perlu ke Shelter!" )
 else:

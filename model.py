@@ -1,6 +1,7 @@
 import reverse_geocoder as rg
 import pprint
 from random import randrange
+
 # print(randrange(10))
 
 location = (12, 30) # get user location
