@@ -101,7 +101,7 @@ def stayAtHome():
 
 if getCity() == bandungLocation:
     style(put_text("Lokasi anda: "+ getCity()+","+ getCountry()), 'color:red')
-    skalaGempa = 8
+    skalaGempa = randrange(10)
     if skalaGempa >= 6:
         if ifTsunami == True:
             userLocation = g.latlng
